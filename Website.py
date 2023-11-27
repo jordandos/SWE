@@ -129,4 +129,5 @@ def upload_resource():
         # (Implementation details depend on where and how you want to store the resources)
         # For simplicity, we'll just return a success message here
         return jsonify({'message': 'Resource uploaded successfully'}), 200
-    except Exception as
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
