@@ -129,8 +129,8 @@ def upload_resource():
         # (Implementation details depend on where and how you want to store the resources)
         # For simplicity, we'll just return a success message here
         # return jsonify({'message': 'Resource uploaded successfully'}), 200
-        
+
         #returns the upload html page to upload resources
-        return render_template('upload_page.html')
+        return render_template('upload.html')
     except Exception as e:
         return jsonify({'error': str(e)}), 500
