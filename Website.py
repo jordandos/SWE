@@ -1,5 +1,5 @@
 # Import necessary libraries and modules
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
@@ -128,6 +128,9 @@ def upload_resource():
         # Save uploaded resource to the database or file system
         # (Implementation details depend on where and how you want to store the resources)
         # For simplicity, we'll just return a success message here
-        return jsonify({'message': 'Resource uploaded successfully'}), 200
+        # return jsonify({'message': 'Resource uploaded successfully'}), 200
+        
+        #returns the upload html page to upload resources
+        return render_template('upload_page.html')
     except Exception as e:
         return jsonify({'error': str(e)}), 500
