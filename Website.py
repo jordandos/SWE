@@ -1,16 +1,23 @@
-# Import necessary libraries and modules
-from flask import Flask, render_template, request, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
+import os
 
-# Initialize Flask application
 app = Flask(__name__)
-CORS(app)  # Enable Cross-Origin Resource Sharing
 
-# Configure the database (replace 'your_database_uri' with your actual database URI)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'your_database_uri'
+# Read the database URI from the text file
+with open('text.txt', 'r') as file:
+    db_uri = file.read().strip()
+
+# Configure the Flask app with the database URI
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+
+# Suppress a warning message
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Create a SQLAlchemy database instance
 db = SQLAlchemy(app)
+
+
 
 # Define database models (replace 'User', 'Course', and 'Advisor' with your actual models)
 class User(db.Model):
